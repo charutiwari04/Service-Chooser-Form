@@ -41,9 +41,13 @@ $(function(){
 		},
 		render: function(){
 			//create the HTML
+			console.log("Hello");
 			this.$el.html('<input type="checkbox" value="1" name="' + this.model.get('title') + '" /> ' + this.model.get('title') + '<span>$' + this.model.get('price') + '</span>');
 			this.$('input').prop('checked', this.model.get('checked'));
 			return this;
+		},
+		toggleService: function(){
+			this.model.toggle();
 		}
 	});
 	//The main view of the appication which loops thorugh all the services in collection and listens change event.
@@ -52,7 +56,6 @@ $(function(){
 		initialize: function(){
 			this.total = $('#total span');
 			this.list = $('#services');
-			
 			this.listenTo(services, 'change', this.render);
 			//Create views for each of the services in collection and add them to the page.
 			services.each(function(service){
@@ -66,6 +69,8 @@ $(function(){
 			_.each(services.getChecked(),function(elem){
 				total += elem.get('price');
 			});
+			console.log(total);
+			
 			this.total.text('$'+total);
 			return this;
 		}
