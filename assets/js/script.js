@@ -23,10 +23,10 @@ $(function(){
 	});
 	//Prefill the ServiceCollection with a number of services
 	var services = new ServiceCollection ([
-	    new Service({title:"printing",price:400}),
-		new Service({title:"painting",price:600}),
-		new Service({title:"web development",price:700}),
-		new Service({title:"coffee drinking",price:100})
+	    new Service({title:"Printing",price:400}),
+		new Service({title:"Painting",price:600}),
+		new Service({title:"Web Development",price:700}),
+		new Service({title:"Coffee Drinking",price:100})
 	]);
 	//View for Services. This view turns service model into HTML and adds LI elements.
 	var ServiceView = Backbone.View.extend({
@@ -42,7 +42,7 @@ $(function(){
 		render: function(){
 			//create the HTML
 			console.log("Hello");
-			this.$el.html('<input type="checkbox" value="1" name="' + this.model.get('title') + '" /> ' + this.model.get('title') + '<span>$' + this.model.get('price') + '</span>');
+			this.$el.html('<input type="checkbox" value="1" name="' + this.model.get('title') + '" /> ' + this.model.get('title') + '<span id="price">$' + this.model.get('price') + '</span>');
 			this.$('input').prop('checked', this.model.get('checked'));
 			return this;
 		},
